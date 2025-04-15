@@ -5,7 +5,7 @@ on:
 
 jobs:
   backwards-compatibility:
-    name: ${matrix.os}-${matrix.node}
+    name: ${{matrix.os}}-${{matrix.node}}
     strategy:
       matrix:
         node: [18.x, 20.x, 21.x]
@@ -16,6 +16,7 @@ jobs:
     steps:
       - name: Setup node
         uses: actions/setup-node@v3
-        with: ${{ matrix.node }}
+        with: 
+          node-version: ${{ matrix.node }}
       - name: perform some test
         run: echo "Running test on Os ${{ matrix.os }} and nodejs ${{ matrix.node }}"
